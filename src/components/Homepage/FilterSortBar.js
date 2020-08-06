@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { StyledNavbarText, StyledInputGroup } from "./FilterSortBarStyles";
-import { siralama } from "../../constants";
+import { categoriesSort } from "../../constants";
 import {
     setFilter,
     searchBooks,
@@ -24,8 +24,6 @@ import {
 
 const FilterSortBar = (props) => {
     const [dropdownOpen, setOpen] = useState(false);
-
-    const toggle = () => setOpen(!dropdownOpen);
     return (
         <div>
             <Container fluid className="bg-white" style={{ padding: "15px" }}>
@@ -43,7 +41,7 @@ const FilterSortBar = (props) => {
                             >
                                 All
                          </StyledNavbarText >
-                            {siralama.map((category) => {
+                            {categoriesSort.map((category) => {
                                 return (
                                     <StyledNavbarText
                                         active={props.activeFilter === category}
@@ -59,20 +57,13 @@ const FilterSortBar = (props) => {
                     </Col>
                        
                     <Col sm={{ size: '4', offset: 2 }}>
-                        {/* <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                            <DropdownToggle caret>Search by name</DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem >Search by name</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>Search by author</DropdownItem>
-                            </DropdownMenu>
-                        </ButtonDropdown> */}
 
                         <StyledInputGroup>
                             <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Search</InputGroupText>
                             </InputGroupAddon>
                             <Input
+                                placeholder={"Name or author"}
                                 onChange={(e) => {
                                     //e.target.value
                                     props.search(e.target.value);
@@ -96,8 +87,11 @@ const FilterSortBar = (props) => {
                         </StyledInputGroup>
                       
                     </Col>
+                    
                 </Row>
             </Container>
+            
+            
         </div>
     );
 };

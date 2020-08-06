@@ -8,7 +8,7 @@ export const StyledBookCard = styled(Card)`
         .card-img-top {
             height: 250px;
             border-style: solid;
-            border-width: 3px;
+            border-width: 5px;
             border-color:black
         }
         

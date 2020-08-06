@@ -11,7 +11,7 @@ import {
   FormFeedback,
 } from "reactstrap";
 import { Formik } from "formik";
-import { siralama, ratings, statuses } from "../../constants";
+import { categoriesSort, ratings, statuses } from "../../constants";
 import { addBook } from "../../state/ducks/books/action";
 import * as Yup from "yup";
 import { withRouter } from "react-router";
@@ -108,7 +108,7 @@ const AddBookForm = (props) => {
                   onChange={handleChange}
                   
                 >
-                  {siralama.map((category) => {
+                  {categoriesSort.map((category) => {
                     return <option>{category}</option>;
                   })}
                 </Input>

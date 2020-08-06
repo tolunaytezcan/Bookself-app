@@ -13,21 +13,20 @@ const Books = (props) => {
     const [dropdownOpen, setOpen] = useState(false);
     const [isList, setList] = useState(false);
     const toggle = () => setOpen(!dropdownOpen);
-    let deger;
-
-    isList? deger = 4 : deger = 12;
-
+    let value,single="",multi="";
+    isList? value = 4  : value = 12;
+    isList? single = "\u2713" : multi = "\u2713";
     return (
         <div>
             <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret>Liste</DropdownToggle>
+                <DropdownToggle caret>List</DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem
                         onClick={() => {
                             setList(true);
                         }}
                     >
-                        Tekli liste
+                        {`Single Book ${single}`}
           </DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem
@@ -35,7 +34,7 @@ const Books = (props) => {
                             setList(false);
                         }}
                     >
-                        Üçlü liste
+                        {`Mutliple Books ${multi}`}
           </DropdownItem>
                 </DropdownMenu>
             </ButtonDropdown>
@@ -43,7 +42,7 @@ const Books = (props) => {
             <Row>
                 {props.items.map((item) => {
                     return (
-                        <Col xs={{ size: 4, offset: deger }}>
+                        <Col xs={{ size: 4, offset: value }}>
                             <Book {...item} />
                             <br />
                         </Col>
