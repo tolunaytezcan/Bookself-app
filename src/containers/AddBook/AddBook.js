@@ -34,7 +34,7 @@ class AddBook extends React.Component {
                     }
                 </Col>
                 <Col xs={12}>
-                    <AddBookForm isEdit={isEdit} book={this.state.book}/>
+                    <AddBookForm isEdit={isEdit} id={id} book={this.state.book}/>
                 </Col>
             </Row>
         );

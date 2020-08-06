@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { Formik } from "formik";
 import { categoriesSort, ratings, statuses } from "../../constants";
-import { addBook } from "../../state/ducks/books/action";
+import { addBook,editBook} from "../../state/ducks/books/action";
 import * as Yup from "yup";
 import { withRouter } from "react-router";
 
@@ -45,9 +45,11 @@ const AddBookForm = (props) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          console.log(values);
-          props.addBook(values, props.history);
-        }}
+
+          props.isEdit ?
+          props.editBook(values, props.history, props.id)
+          : props.addBook(values, props.history)
+  }}
         enableReinitialize={true}
       >
         {({
@@ -178,9 +180,9 @@ const AddBookForm = (props) => {
 
               </FormGroup>
               {props.isEdit ? (
-                <Button color="primary">Save</Button>
+                <Button color="primary">Edit Book</Button>
               ) : (
-                  <Button color="primary">Add</Button>
+                  <Button color="primary">Add Book</Button>
                 )}
             </Form>
           )}
@@ -191,6 +193,7 @@ const AddBookForm = (props) => {
 
 const mapDispatchToProps = {
   addBook: addBook,
+  editBook : editBook,
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(AddBookForm));
